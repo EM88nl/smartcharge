@@ -607,22 +607,22 @@
 <!-- Line Chart -->
 <div id="reportsChart"></div>
 
-{% if l1_data and l2_data and l3_data and total_data %}
+{% if mennekes_l1_data and mennekes_l2_data and mennekes_l3_data and mennekes_total_data %}
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     new ApexCharts(document.querySelector("#reportsChart"), {
       series: [{
         name: 'L1',
-        data: {{ l1_data | tojson }},
+        data: {{ mennekes_l1_data | tojson }},
       }, {
         name: 'L2',
-        data: {{ l2_data | tojson }},
+        data: {{ mennekes_l2_data | tojson }},
       }, {
         name: 'L3',
-        data: {{ l3_data | tojson }},
+        data: {{ mennekes_l3_data | tojson }},
       }, {
         name: 'Total',
-        data: {{ total_data | tojson }},
+        data: {{ mennekes_total_data | tojson }},
       }],
       chart: {
         height: 350,

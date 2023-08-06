@@ -43,7 +43,7 @@ def index():
                            mennekes_state = get_mennekes_state(),
                            mennekes_session_energy = round(mennekes.read_float(0x0B02), 2),
                            mennekes_session_duration = get_mennekes_session_duration(),
-                           mennekes_l1_power = l1_data, mennekes_l2_power = l2_data, mennekes_l3_power = l3_data, total_data = total_data,
+                           mennekes_l1_power = l1_data, mennekes_l2_power = l2_data, mennekes_l3_power = l3_data, mennekes_total_data = total_data,
     )
 
 if __name__ == '__main__':
