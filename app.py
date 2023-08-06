@@ -3,6 +3,8 @@ from flask_bootstrap import Bootstrap
 
 import minimalmodbus
 
+from datetime import timedelta
+
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
 
@@ -23,11 +25,17 @@ def get_mennekes_state():
 
     return status_map.get(raw_data, 'Unknown Status')
 
+
+def get_mennekes_session_duration():
+    raw_data = mennekes.read_long(0x0B04)
+    return timedelta(seconds=raw_data)
+
 @app.route('/')
 def index():
     return render_template('index.html',
                            mennekes_state = get_mennekes_state(),
                            mennekes_session_energy = mennekes.read_float(0x0B02)
+                           get_mennekes_session_duration = get_mennekes_session_duration()
     )
 
 if __name__ == '__main__':
