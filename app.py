@@ -3,8 +3,6 @@ from flask_bootstrap import Bootstrap
 
 import minimalmodbus
 
-from datetime import datetime
-
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
 
@@ -27,9 +25,11 @@ def get_mennekes_state():
 
 
 def get_mennekes_session_duration():
-    raw_data = mennekes.read_long(0x0B04)
-    time = datetime.seconds = raw_data
-    return f"{time.hours:02d}:{time.minutes:02d}"
+    seconds = mennekes.read_long(0x0B04)
+    hours = seconds // 3600
+    remaining_seconds = seconds % 3600
+    minutes = remaining_seconds // 60
+    time_str = f"{hours:02d}:{minutes:02d}"
 
 @app.route('/')
 def index():
