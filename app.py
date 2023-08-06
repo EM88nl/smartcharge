@@ -44,6 +44,7 @@ def index():
                            mennekes_state_text = get_mennekes_state_text(mennekes_state),
                            mennekes_session_energy = round(mennekes.read_float(0x0B02), 2),
                            mennekes_session_duration = get_mennekes_session_duration(),
+                           mennekes_current_limitation = round(mennekes.read_float(0x0302), 2),
     )
 
 if __name__ == '__main__':
