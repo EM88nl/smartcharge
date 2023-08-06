@@ -607,7 +607,6 @@
 <!-- Line Chart -->
 <div id="reportsChart"></div>
 
-{% if mennekes_l1_data and mennekes_l2_data and mennekes_l3_data and mennekes_total_data %}
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     new ApexCharts(document.querySelector("#reportsChart"), {
@@ -663,7 +662,6 @@
     }).render();
   });
 </script>
-{% endif %}
 <!-- End Line Chart -->
 
 
