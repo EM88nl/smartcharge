@@ -28,7 +28,8 @@ def get_mennekes_state():
 
 def get_mennekes_session_duration():
     raw_data = mennekes.read_long(0x0B04)
-    return timedelta(seconds=raw_data)
+    time = timedelta(seconds=raw_data)
+    return f"{time.hours:02d}:{time.minutes:02d}"
 
 @app.route('/')
 def index():
