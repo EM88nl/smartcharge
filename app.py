@@ -27,7 +27,7 @@ def get_mennekes_state():
 def index():
     return render_template('index.html',
                            mennekes_state = get_mennekes_state(),
-                           mennekes_power = mennekes.read_float(0x0512)
+                           mennekes_session_energy = mennekes.read_float(0x0B02)
     )
 
 if __name__ == '__main__':
