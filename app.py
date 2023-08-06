@@ -24,9 +24,9 @@ def get_mennekes_state():
     return status_map.get(raw_data, 'Unknown Status')
 
 def get_mennekes_state_text(state):
-    if state.equals('Idle'):
+    if state == 'Idle':
         return 'Vehicle not connected'
-    if state.equals('Charging'):
+    if state == 'Charging':
         return round(mennekes.read_float(0x0512), 2) + ' kW'
 
 def get_mennekes_session_duration():
