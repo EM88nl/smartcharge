@@ -25,7 +25,7 @@ def get_mennekes_state():
 
 def get_mennekes_state_text(state):
     if state == 'Idle':
-        return 'Vehicle not connected'
+        return 'Disconnected'
     if state == 'Charging':
         return round(mennekes.read_float(0x0512), 2) + ' kW'
 
