@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_bootstrap import Bootstrap
 
 import minimalmodbus
@@ -35,6 +35,16 @@ def get_mennekes_session_duration():
     remaining_seconds = raw_data % 3600
     minutes = remaining_seconds // 60
     return '{:02d}:{:02d}'.format(hours, minutes)
+
+@app.route("/save_current_limitation", methods=["POST"])
+def save_limit():
+    data = request.get_json()
+    limit = data.get("limit")
+    
+    # Perform your Python action here using the 'limit' value
+    # For example, you can save the limit to a database or perform other processing
+    
+    return "Limit saved successfully"
 
 @app.route('/')
 def index():

@@ -181,6 +181,30 @@
                 </div>
               </div>
             </div>
+            <script>
+              document.addEventListener("DOMContentLoaded", function () {
+                var saveButton = document.querySelector("#verticalycentered .btn-primary");
+                var currentLimitInput = document.querySelector("#currentLimitInput");
+              
+                saveButton.addEventListener("click", function () {
+                  var currentLimit = currentLimitInput.value;
+                  saveCurrentLimit(currentLimit);
+                });
+              
+                function saveCurrentLimit(limit) {
+                  // Send the value to the server using an AJAX request
+                  // You can use libraries like Axios or fetch to make the request
+                  // For example, using fetch:
+                  fetch("/save_current_limitation", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ limit: limit }),
+                  });
+                }
+              });
+              </script>              
 
             <!-- Reports -->
             <div class="col-12">
