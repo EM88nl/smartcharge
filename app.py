@@ -40,4 +40,5 @@ if __name__ == '__main__':
     mennekes.serial.baudrate = 57600
     mennekes.serial.stopbits = 2
     mennekes.close_port_after_each_call = True
+    mennekes.write_float(0x0302, 6.0)
     app.run(host='0.0.0.0', debug=True)
