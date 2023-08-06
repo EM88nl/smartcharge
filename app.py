@@ -9,7 +9,7 @@ bootstrap = Bootstrap(app)
 mennekes = minimalmodbus.Instrument('/dev/ttyUSB0', 50)
 
 def get_mennekes_state():
-    raw_data = mennekes.read_register(0x0000)
+    raw_data = mennekes.read_register(0x0100)
     status_map = {
         0: 'Not Initialized',
         1: 'Idle',
@@ -32,4 +32,4 @@ if __name__ == '__main__':
     mennekes.serial.baudrate = 57600
     mennekes.serial.stopbits = 2
     mennekes.close_port_after_each_call = True
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', debug=True)
