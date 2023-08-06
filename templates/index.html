@@ -604,8 +604,10 @@
                   <h5 class="card-title">Reports <span>/Today</span></h5>
 
                   <!-- Line Chart -->
+<!-- Line Chart -->
 <div id="reportsChart"></div>
 
+{% if l1_data and l2_data and l3_data and total_data %}
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     new ApexCharts(document.querySelector("#reportsChart"), {
@@ -661,7 +663,9 @@
     }).render();
   });
 </script>
+{% endif %}
 <!-- End Line Chart -->
+
 
 
 
