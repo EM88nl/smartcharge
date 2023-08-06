@@ -611,16 +611,16 @@
     new ApexCharts(document.querySelector("#reportsChart"), {
       series: [{
         name: 'L1',
-        data: [10, 15, 12, 14, 17, 16, 13],
+        data: {{ l1_data | tojson }},
       }, {
         name: 'L2',
-        data: [12, 14, 11, 13, 18, 15, 16],
+        data: {{ l2_data | tojson }},
       }, {
         name: 'L3',
-        data: [14, 16, 13, 12, 15, 11, 17],
+        data: {{ l3_data | tojson }},
       }, {
         name: 'Total',
-        data: [36, 45, 36, 39, 50, 42, 46],
+        data: {{ total_data | tojson }},
       }],
       chart: {
         height: 350,
@@ -662,6 +662,7 @@
   });
 </script>
 <!-- End Line Chart -->
+
 
 
                 </div>
