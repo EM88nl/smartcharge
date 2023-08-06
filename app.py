@@ -23,6 +23,11 @@ def get_mennekes_state():
 
     return status_map.get(raw_data, 'Unknown Status')
 
+def get_mennekes_state_text(state):
+    if state.equals('Idle'):
+        return 'Vehicle not connected'
+    if state.equals('Charging'):
+        return round(mennekes.read_float(0x0512), 2) + ' kW'
 
 def get_mennekes_session_duration():
     raw_data = mennekes.read_long(0x0B04)
@@ -33,8 +38,10 @@ def get_mennekes_session_duration():
 
 @app.route('/')
 def index():
+    mennekes_state = get_mennekes_state()
     return render_template('index.html',
-                           mennekes_state = get_mennekes_state(),
+                           mennekes_state = mennekes_state,
+                           mennekes_state_text = get_mennekes_state_text(mennekes_state),
                            mennekes_session_energy = round(mennekes.read_float(0x0B02), 2),
                            mennekes_session_duration = get_mennekes_session_duration(),
     )
@@ -43,5 +50,4 @@ if __name__ == '__main__':
     mennekes.serial.baudrate = 57600
     mennekes.serial.stopbits = 2
     mennekes.close_port_after_each_call = True
-    mennekes.write_float(0x0302, 6.0)
     app.run(host='0.0.0.0', debug=True)
