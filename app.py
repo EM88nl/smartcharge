@@ -25,25 +25,19 @@ def get_mennekes_state():
 
 
 def get_mennekes_session_duration():
-    seconds = mennekes.read_long(0x0B04)
-    return seconds
-
-
-def get_mennekes_power():
-    l1_data = [10, 15, 12, 14, 17, 16, 13]
-    l2_data = [12, 14, 11, 13, 18, 15, 16]
-    l3_data = [14, 16, 13, 12, 15, 11, 17]
-    total_data = [sum(data) for data in zip(l1_data, l2_data, l3_data)]
-    return l1_data, l2_data, l3_data, total_data
+    raw_data = mennekes.read_long(0x0B04)
+    hours = raw_data // 3600
+    remaining_seconds = raw_data % 3600
+    minutes = remaining_seconds // 60
+    duration = '{0}:{1}'.format(hours, minutes)
+    return duration
 
 @app.route('/')
 def index():
-    l1_data, l2_data, l3_data, total_data = get_mennekes_power()
     return render_template('index.html',
                            mennekes_state = get_mennekes_state(),
                            mennekes_session_energy = round(mennekes.read_float(0x0B02), 2),
                            mennekes_session_duration = get_mennekes_session_duration(),
-                           mennekes_l1_power = l1_data, mennekes_l2_power = l2_data, mennekes_l3_power = l3_data, mennekes_total_data = total_data,
     )
 
 if __name__ == '__main__':
