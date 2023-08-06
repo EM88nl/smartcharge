@@ -40,7 +40,7 @@ def get_mennekes_session_duration():
 def save_limit():
     data = request.get_json()
     limit = data.get("limit")
-    mennekes.write_float(0x0302, limit)
+    mennekes.write_float(0x0302, float(limit))
     return "Limit saved successfully"
 
 @app.route('/')
