@@ -40,11 +40,7 @@ def get_mennekes_session_duration():
 def save_limit():
     data = request.get_json()
     limit = data.get("limit")
-    print(limit)
-    
-    # Perform your Python action here using the 'limit' value
-    # For example, you can save the limit to a database or perform other processing
-    
+    mennekes.write_float(0x0302, limit)
     return "Limit saved successfully"
 
 @app.route('/')
