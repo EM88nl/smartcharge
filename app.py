@@ -34,7 +34,7 @@ def get_mennekes_session_duration():
 def index():
     return render_template('index.html',
                            mennekes_state = get_mennekes_state(),
-                           mennekes_session_energy = mennekes.read_float(0x0B02)
+                           mennekes_session_energy = mennekes.read_float(0x0B02),
                            mennekes_session_duration = get_mennekes_session_duration()
     )
 
