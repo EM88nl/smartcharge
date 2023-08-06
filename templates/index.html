@@ -201,6 +201,9 @@
                       "Content-Type": "application/json",
                     },
                     body: JSON.stringify({ limit: limit }),
+                  })
+                  .then(data => {
+                    window.location.reload();
                   });
                 }
               });
