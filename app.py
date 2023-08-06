@@ -29,8 +29,7 @@ def get_mennekes_session_duration():
     hours = raw_data // 3600
     remaining_seconds = raw_data % 3600
     minutes = remaining_seconds // 60
-    duration = '{0}:{1}'.format(hours, minutes)
-    return duration
+    return '{:02d}:{:02d}'.format(hours, minutes)
 
 @app.route('/')
 def index():
