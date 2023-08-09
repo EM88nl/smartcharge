@@ -27,7 +27,7 @@ def get_mennekes_state_text(state):
     if state == 'Idle':
         return 'EV Disconnected'
     if state == 'Charging':
-        return round(mennekes.read_float(0x0512), 2) + ' kW'
+        return "{0} kW".format(round(mennekes.read_float(0x0512), 2))
 
 def get_mennekes_session_duration():
     raw_data = mennekes.read_long(0x0B04)
